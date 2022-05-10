@@ -1,5 +1,6 @@
 package xyz.yuelai;
 
+import cn.hutool.core.io.resource.ResourceUtil;
 import javafx.application.Platform;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
@@ -8,14 +9,11 @@ import javafx.event.EventDispatchChain;
 import javafx.event.EventTarget;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.geometry.Insets;
-import javafx.scene.Group;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.stage.Window;
@@ -27,7 +25,12 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.net.URL;
-import java.util.*;
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.ResourceBundle;
 import java.util.concurrent.CompletableFuture;
 
 /**
@@ -60,16 +63,16 @@ public abstract class View implements Initializable, EventTarget {
         try {
             // Usage of GetResource in new View() may be unsafe if class is extended
             // 在这里就是为了从子类获取资源路径，所以是安全的
-            FXMLLoader loader = new FXMLLoader(getClass().getResource(fxml()));
+            FXMLLoader loader = new FXMLLoader(ResourceUtil.getResource(fxml()));
             loader.setController(this);
             root = loader.load();
             scene.bind(root.sceneProperty());
             scene.addListener((observable, oldValue, newValue) -> {
                 if (newValue != null) {
                     if (ELEMENT_STYLE) {
-                        newValue.getStylesheets().add(getClass().getResource("/css/element-ui.css").toExternalForm());
+                        newValue.getStylesheets().add(ResourceUtil.getResource("css/element-ui.css").toExternalForm());
                     }
-                    newValue.getStylesheets().add(getClass().getResource("/css/icon.css").toExternalForm());
+                    newValue.getStylesheets().add(ResourceUtil.getResource("css/icon.css").toExternalForm());
 
                     newValue.windowProperty().addListener((observable1, oldValue1, newValue1) -> {
                         if (newValue1 != null) {

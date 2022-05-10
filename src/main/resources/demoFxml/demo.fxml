@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import xyz.yuelai.control.*?>
+
+<StackPane prefHeight="500" prefWidth="800" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+    <VBox alignment="center">
+      <children>
+         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
+            <children>
+               <Button mnemonicParsing="false" text="默认" />
+               <Button mnemonicParsing="false" styleClass="button-primary" text="primary" />
+               <Button fx:id="successBtn" mnemonicParsing="false" styleClass="button-success" text="success" />
+               <Button fx:id="infoBtn" mnemonicParsing="false" styleClass="button-info" text="info" />
+               <Button fx:id="dangerBtn" mnemonicParsing="false" styleClass="button-danger" text="danger" />
+               <Button mnemonicParsing="false" styleClass="button-warning" text="warning" />
+                <EleSwitch text="AAA" HBox.hgrow="NEVER" />
+            </children>
+         </HBox>
+         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
+            <children>
+               <RadioButton mnemonicParsing="false" text="RadioButton" />
+               <RadioButton mnemonicParsing="false" text="RadioButton" />
+               <CheckBox mnemonicParsing="false" text="CheckBox" />
+            </children></HBox>
+         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
+            <children>
+               <PasswordField />
+               <TextField />
+               <TextArea prefHeight="200.0" prefWidth="200.0" />
+            </children>
+         </HBox>
+         <HBox prefHeight="100.0" prefWidth="200.0">
+            <children>
+               <ComboBox fx:id="cbBox" prefWidth="150.0" promptText="AAA" />
+               <DatePicker />
+            </children>
+         </HBox>
+         <HBox prefHeight="250.0" prefWidth="800.0">
+            <children>
+               <TableView fx:id="table" prefHeight="220.0" prefWidth="611.0">
+                 <columns>
+                   <TableColumn fx:id="firstNameCol" prefWidth="142.0" text="firstNameCol" />
+                   <TableColumn fx:id="lastNameCol" minWidth="0.0" prefWidth="167.0" text="lastNameCol" />
+                     <TableColumn fx:id="emailCol" prefWidth="301.0" text="emailCol" />
+                 </columns>
+               </TableView>
+            </children>
+         </HBox>
+      </children>
+    </VBox>
+</StackPane>
